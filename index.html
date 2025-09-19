@@ -1,45 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lecture Timestamp — UPSC</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lecture Timestamp Helper</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="wrap">
-    <header class="hdr">
-      <h1>Lecture Timestamp</h1>
-      <div id="startDisplay" class="start-display">Start: <span class="muted">Not set</span></div>
-    </header>
+  <div class="container">
+    <h2>Lecture Timestamp Helper</h2>
 
-    <section class="card">
-      <div class="row">
-        <input id="startInput" class="input" placeholder="HH:MM or HH:MM:SS" inputmode="numeric" />
-        <button id="setStartBtn" class="btn">Set</button>
-        <button id="nowBtn" class="btn ghost">Now</button>
+    <!-- Start Time Section -->
+    <div class="card">
+      <label for="startTime">Start Time:</label>
+      <input type="time" id="startTime" />
+      <button onclick="setNow()">Set Now</button>
+      <p id="displayStart">⏱ Not Set</p>
+    </div>
+
+    <!-- Subject + Timestamp -->
+    <div class="card">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" placeholder="Enter subject name" />
+
+      <div class="btn-group">
+        <button onclick="markStart()">➕ Mark Start</button>
+        <button onclick="markEnd()">📌 Mark End</button>
       </div>
+    </div>
 
-      <div class="row" style="margin-top:10px;">
-        <input id="missInput" class="input" placeholder="e.g. 00:45:30 or 00:45:30 - 00:50:00" />
-        <button id="addBtn" class="btn primary">Add</button>
-      </div>
-
-      <div id="hint" class="hint">Enter single time or range. Press Add (✓) to save.</div>
-    </section>
-
-    <section id="listCard" class="card list-card">
-      <div class="list-header">
-        <strong>Missed points</strong>
-        <div class="actions-row">
-          <button id="copyAll" class="btn small ghost">Copy all</button>
-          <button id="clearAll" class="btn small danger">Clear</button>
-        </div>
-      </div>
-      <ul id="entries" class="entries"></ul>
-      <div id="empty" class="empty muted">No missed points yet</div>
-    </section>
-  </main>
+    <!-- Output -->
+    <div class="card">
+      <h3>Missed Points</h3>
+      <ul id="output"></ul>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
